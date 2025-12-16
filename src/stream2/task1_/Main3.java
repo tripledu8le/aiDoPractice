@@ -2,7 +2,6 @@ package stream2.task1_;
 
 import java.util.*;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Main3 {
 
