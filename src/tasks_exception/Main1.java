@@ -8,5 +8,13 @@ public class Main1 {
           return a/b;
       }
 
+      public void practice2 (String text) {
+          if (text == null) {
+              throw new IllegalArgumentException("String cannot be null");
+          }
+          System.out.println(text.length());
+      }
+
+
 
 }
