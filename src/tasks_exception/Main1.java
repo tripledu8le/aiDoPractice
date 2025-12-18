@@ -15,6 +15,11 @@ public class Main1 {
           System.out.println(text.length());
       }
 
-
+      public void practice3 (int age) throws Exception{
+          if (age <1 || age > 120) {
+              throw new Exception ("Incorrect age" + age);
+          }
+          System.out.println("set age " + age);
+      }
 
 }
