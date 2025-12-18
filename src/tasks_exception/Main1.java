@@ -29,5 +29,18 @@ public class Main1 {
           System.out.println(arr[index]);
       }
 
+      public void practice5 (String password) throws InvalidPasswordException {
+          if (password == null || password.length() <6) {
+              throw new InvalidPasswordException("Password is short");
+          }
+          System.out.println("Password is axcepted");
+      }
 
+
+}
+
+class InvalidPasswordException extends Exception {
+    public InvalidPasswordException (String msg) {
+        super(msg);
+    }
 }
