@@ -22,4 +22,12 @@ public class Main1 {
           System.out.println("set age " + age);
       }
 
+      public void practice4 (int [] arr, int index) {
+          if (index <0 || arr.length > index) {
+              throw new ArrayIndexOutOfBoundsException("array is shorted than " + index);
+          }
+          System.out.println(arr[index]);
+      }
+
+
 }
