@@ -1,11 +1,9 @@
 package tasks_exception;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main1 {
@@ -64,7 +62,6 @@ public class Main1 {
         }
     }
 
-
     public static String practice8 (String file) throws IOException{
             return new String(Files.readAllBytes(Paths.get(file)));
     } // цей нижчий
@@ -80,8 +77,18 @@ public class Main1 {
         }
     } // цей вищий, викликає practice
 
+    public static void practice9 (String number) throws Exception {
+        try {
+            int i = Integer.parseInt(number);
+            System.out.println(i);
+        }
+        catch (NumberFormatException e) {
+            throw new Exception("Unable to handle the exception, ", e);
+        }
 
+    }
 }
+
 class InvalidPasswordException extends Exception {
     public InvalidPasswordException (String msg) {
         super(msg);
