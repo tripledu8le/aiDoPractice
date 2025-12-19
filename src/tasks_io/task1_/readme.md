@@ -54,10 +54,28 @@ File file = new File("data/example.txt");
 file.getParentFile().mkdirs()
 
 ✅ Рішення
+public void practice2 () {
 File file = new File("data/example.txt");
 
-file.getParentFile().mkdirs();
-file.createNewFile();
+    try {
+        File parent = file.getParentFile();
+
+        if (!parent.exists()) {
+            parent.mkdirs();
+            System.out.println("folder created");
+        }
+
+        if (file.createNewFile()) {
+            System.out.println("file created");
+        } else {
+            System.out.println("file already exists");
+        }
+
+    } catch (IOException e) {
+        System.out.println("unable to create file: " + e.getMessage());
+    }
+}
+
 ✍️ Завдання 3 — Записати текст у файл
 Умова:
 Запиши "Hello Java IO" у файл.
