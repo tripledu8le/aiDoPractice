@@ -68,7 +68,6 @@ public class Main1 {
 
 
     public static void run () {
-
         try {
             String data = practice8("file.txt");
             System.out.println(data);
@@ -83,10 +82,34 @@ public class Main1 {
             System.out.println(i);
         }
         catch (NumberFormatException e) {
-            throw new Exception("Unable to handle the exception, ", e);
+            throw new Exception("Unable to handle the number, ", e);
+        }
+    }
+
+    public static void level1 () throws IOException {
+        throw new IOException("file is unnavailable");
+    }
+
+    public static void level2 () throws IOException {
+        try {
+            level1();
+        } catch (IOException e) {
+            System.out.println("LOG level2 handle IOException");
+            throw new RuntimeException("service trouble", e);
+        }
+    }
+
+    public static void level3 () {
+        try {
+            level2();
+        } catch (RuntimeException e) {
+            System.out.println("final error" + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }
+
 }
 
 class InvalidPasswordException extends Exception {
