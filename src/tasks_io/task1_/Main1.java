@@ -1,6 +1,7 @@
 package tasks_io.task1_;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main1 {
@@ -31,5 +32,15 @@ public class Main1 {
             System.out.println("unable to create file, " + e.getMessage());
         }
     }
+
+    public void practice3 () {
+        try (FileWriter fileWriter = new FileWriter("data/example.txt")) {
+            fileWriter.write("Hello JAVA IO");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
