@@ -1,8 +1,6 @@
 package tasks_io.task1_;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Main1 {
     public void practice1() {
@@ -48,6 +46,17 @@ public class Main1 {
             e.printStackTrace();
         }
     }
+
+    public void practice5 () {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data/example.txt"))) {
+            String line;
+            while ((line = reader.readLine())!= null) {
+            System.out.println(line);
+        }} catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
