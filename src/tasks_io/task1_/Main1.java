@@ -41,6 +41,13 @@ public class Main1 {
         }
     }
 
+    public void practice4 () {
+        try (FileWriter fileWriter = new FileWriter("data/example.txt", true)) {
+            fileWriter.write("\nSecond line");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
