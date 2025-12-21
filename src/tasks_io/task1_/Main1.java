@@ -57,6 +57,14 @@ public class Main1 {
         }
     }
 
-
+    public void practice6 () {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter ("data/numbers.txt"))) {
+            for (int i = 1; i>=5; i++) {
+                writer.write(String.valueOf(i));
+                writer.newLine();
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 }

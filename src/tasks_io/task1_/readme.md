@@ -148,16 +148,18 @@ new BufferedReader(new FileReader("data/example.txt"))) {
 Запиши числа від 1 до 5, кожне з нового рядка.
 
 ✅ Рішення
-try (BufferedWriter writer =
-new BufferedWriter(new FileWriter("data/numbers.txt"))) {
 
-    for (int i = 1; i <= 5; i++) {
-        writer.write(String.valueOf(i));
-        writer.newLine();
-    }
+    public void practice6 () {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter ("data/numbers.txt"))) {
+            for (int i = 1; i>=5; i++) {
+                writer.write(String.valueOf(i));
+                writer.newLine();
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-}
-➕ Завдання 7 — Прочитати числа і порахувати суму
+## ➕ Завдання 7 — Прочитати числа і порахувати суму
 Умова:
 Прочитай numbers.txt і порахуй суму чисел.
 
