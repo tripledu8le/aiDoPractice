@@ -16,12 +16,12 @@ public class Main1 {
         }
     }
 
-    public void practice2 () {
+    public void practice2() {
         File file = new File("data/example.txt");
 
         try {
-            if(file.getParentFile().mkdirs() &&
-            file.createNewFile()) {
+            if (file.getParentFile().mkdirs() &&
+                    file.createNewFile()) {
                 System.out.println("folder and file created");
             } else {
                 System.out.println("file is exists");
@@ -31,7 +31,7 @@ public class Main1 {
         }
     }
 
-    public void practice3 () {
+    public void practice3() {
         try (FileWriter fileWriter = new FileWriter("data/example.txt")) {
             fileWriter.write("Hello JAVA IO");
         } catch (IOException e) {
@@ -39,7 +39,7 @@ public class Main1 {
         }
     }
 
-    public void practice4 () {
+    public void practice4() {
         try (FileWriter fileWriter = new FileWriter("data/example.txt", true)) {
             fileWriter.write("\nSecond line");
         } catch (IOException e) {
@@ -47,24 +47,43 @@ public class Main1 {
         }
     }
 
-    public void practice5 () {
+    public void practice5() {
         try (BufferedReader reader = new BufferedReader(new FileReader("data/example.txt"))) {
             String line;
-            while ((line = reader.readLine())!= null) {
-            System.out.println(line);
-        }} catch (IOException e) {
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void practice6 () {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter ("data/numbers.txt"))) {
-            for (int i = 1; i>=5; i++) {
+    public void practice6() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/numbers.txt"))) {
+            for (int i = 1; i >= 5; i++) {
                 writer.write(String.valueOf(i));
                 writer.newLine();
-            }} catch (IOException e) {
-                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void practice7() {
+        int sum = 0;
+        try (BufferedReader reader = new BufferedReader (new FileReader("data/numbers.txt"))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sum += Integer.parseInt(line);
             }
         }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Sum is " + sum);
+    }
+
+
 
 }

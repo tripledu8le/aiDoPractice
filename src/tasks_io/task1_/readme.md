@@ -86,18 +86,15 @@ FileWriter
 try-with-resources
 
 ✅ Рішення
-import java.io.FileWriter;
-import java.io.IOException;
 
-public class Task03 {
-public static void main(String[] args) {
-try (FileWriter writer = new FileWriter("data/example.txt")) {
-writer.write("Hello Java IO");
-} catch (IOException e) {
-e.printStackTrace();
-}
-}
-}
+    public void practice3() {
+        try (FileWriter fileWriter = new FileWriter("data/example.txt")) {
+            fileWriter.write("Hello JAVA IO");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 ⚠️ Важливо:
 FileWriter перезаписує файл, якщо він існує.
 
@@ -109,9 +106,14 @@ FileWriter перезаписує файл, якщо він існує.
 new FileWriter(path, true)
 
 ✅ Рішення
-try (FileWriter writer = new FileWriter("data/example.txt", true)) {
-writer.write("\nSecond line");
-}
+
+    public void practice4() {
+        try (FileWriter fileWriter = new FileWriter("data/example.txt", true)) {
+            fileWriter.write("\nSecond line");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 ## 📖 Завдання 5 — Прочитати файл построчно
@@ -124,25 +126,18 @@ BufferedReader
 readLine()
 
 ✅ Рішення
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-public class Task05 {
-public static void main(String[] args) {
-try (BufferedReader reader =
-new BufferedReader(new FileReader("data/example.txt"))) {
-
+    public void practice5() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data/example.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
+
 ## 🔢 Завдання 6 — Записати числа у файл
 Умова:
 Запиши числа від 1 до 5, кожне з нового рядка.
