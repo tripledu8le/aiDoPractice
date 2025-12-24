@@ -51,10 +51,35 @@ import java.io.IOException;
 file.getParentFile().mkdirs()
 
 ✅ Рішення
-File file = new File("data/example.txt");
 
-file.getParentFile().mkdirs();
-file.createNewFile();
+    public void practice2 () {
+        File file = new File("data/example.txt");
+
+        try {
+            if (file.getParentFile().mkdirs()) {
+                System.out.println("directory created");
+            } else {
+                System.out.println("directory already exists or cannot be created");
+            }
+
+//Більш безпечний варіант:
+
+File parentDir = file.getParentFile();
+if (!parentDir.exists()) {
+parentDir.mkdirs();
+}
+
+
+            if (file.createNewFile()) {
+                System.out.println("file created");
+            } else {
+                System.out.println("file already exists");
+            }
+        } catch (IOException e) {
+            System.out.println("що призвело до помилки невідомо");
+        }
+
+
 
 ✍️ Завдання 3 — Записати текст у файл
 Умова:
