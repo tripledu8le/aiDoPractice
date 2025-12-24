@@ -27,21 +27,18 @@ file.createNewFile()
 import java.io.File;
 import java.io.IOException;
 
-public class Task01 {
-public static void main(String[] args) {
-File file = new File("data/example.txt");
-
+    public void practice1() {
+        File file = new File("data/example/txt");
         try {
             if (file.createNewFile()) {
-                System.out.println("Файл створено");
+                System.out.println("File created");
             } else {
-                System.out.println("Файл вже існує");
+                System.out.println("File already exists");
             }
         } catch (IOException e) {
-            System.out.println("Помилка створення файлу: " + e.getMessage());
+            System.out.println("Eroor creating file, folder doesn't exists " + e.getMessage());
         }
     }
-}
 
 
 📎 Нюанс: якщо папки data нема — буде помилка❗
@@ -54,27 +51,10 @@ File file = new File("data/example.txt");
 file.getParentFile().mkdirs()
 
 ✅ Рішення
-public void practice2 () {
 File file = new File("data/example.txt");
 
-    try {
-        File parent = file.getParentFile();
-
-        if (!parent.exists()) {
-            parent.mkdirs();
-            System.out.println("folder created");
-        }
-
-        if (file.createNewFile()) {
-            System.out.println("file created");
-        } else {
-            System.out.println("file already exists");
-        }
-
-    } catch (IOException e) {
-        System.out.println("unable to create file: " + e.getMessage());
-    }
-}
+file.getParentFile().mkdirs();
+file.createNewFile();
 
 ✍️ Завдання 3 — Записати текст у файл
 Умова:
@@ -86,19 +66,22 @@ FileWriter
 try-with-resources
 
 ✅ Рішення
+import java.io.FileWriter;
+import java.io.IOException;
 
-    public void practice3() {
-        try (FileWriter fileWriter = new FileWriter("data/example.txt")) {
-            fileWriter.write("Hello JAVA IO");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+public class Task03 {
+public static void main(String[] args) {
+try (FileWriter writer = new FileWriter("data/example.txt")) {
+writer.write("Hello Java IO");
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
 ⚠️ Важливо:
 FileWriter перезаписує файл, якщо він існує.
 
-## ➕ Завдання 4 — Додати текст у кінець файлу
+➕ Завдання 4 — Додати текст у кінець файлу
 Умова:
 Додай новий рядок "Second line".
 
@@ -106,17 +89,10 @@ FileWriter перезаписує файл, якщо він існує.
 new FileWriter(path, true)
 
 ✅ Рішення
-
-    public void practice4() {
-        try (FileWriter fileWriter = new FileWriter("data/example.txt", true)) {
-            fileWriter.write("\nSecond line");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-## 📖 Завдання 5 — Прочитати файл построчно
+try (FileWriter writer = new FileWriter("data/example.txt", true)) {
+writer.write("\nSecond line");
+}
+📖 Завдання 5 — Прочитати файл построчно
 Умова:
 Виведи всі рядки файлу в консоль.
 
@@ -126,35 +102,40 @@ BufferedReader
 readLine()
 
 ✅ Рішення
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-    public void practice5() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("data/example.txt"))) {
+public class Task05 {
+public static void main(String[] args) {
+try (BufferedReader reader =
+new BufferedReader(new FileReader("data/example.txt"))) {
+
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-## 🔢 Завдання 6 — Записати числа у файл
+}
+🔢 Завдання 6 — Записати числа у файл
 Умова:
 Запиши числа від 1 до 5, кожне з нового рядка.
 
 ✅ Рішення
+try (BufferedWriter writer =
+new BufferedWriter(new FileWriter("data/numbers.txt"))) {
 
-    public void practice6 () {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter ("data/numbers.txt"))) {
-            for (int i = 1; i>=5; i++) {
-                writer.write(String.valueOf(i));
-                writer.newLine();
-            }} catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    for (int i = 1; i <= 5; i++) {
+        writer.write(String.valueOf(i));
+        writer.newLine();
+    }
 
-## ➕ Завдання 7 — Прочитати числа і порахувати суму
+}
+➕ Завдання 7 — Прочитати числа і порахувати суму
 Умова:
 Прочитай numbers.txt і порахуй суму чисел.
 
